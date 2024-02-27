@@ -1,4 +1,4 @@
-To get started with the project, clone the repo into local folder and then run
+To get started with the project, clone the repo into local folder and run below cmd from root directory.
 
 ### `npm start`
 
