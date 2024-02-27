@@ -5,10 +5,9 @@ function HeaderBanner(){
     const [checkList,setCheckList] = useState([]);
 
     const handleSubmit =(event) => {
-        if (event.key === 'Enter') {
-            let value = event.target.value
-            setCheckList([...checkList, value]);
-          }
+        event.preventDefault();
+        setCheckList([...checkList, event.target[0].value]);
+        event.target.reset();
     }
 
     const handleRemove = (index) => {
@@ -31,14 +30,16 @@ function HeaderBanner(){
                 <img className='sun' src={require('../images/icon-sun.png')} alt='sun'/>
             </div>
             <div className="input_area">
-                <div className="check-icon" onClick={()=>{
-                    let markStyle = document.getElementById('check-mark').style;
-                    markStyle.visibility = markStyle.visibility === 'hidden' ? 'visible' : 'hidden';}} >
-                    <img id='check-mark' className='check-mark' src={require('../images/icon-check.png')} alt='check'/>
-                </div>
-                <input type="text" placeholder="Currently typing" onKeyDown={handleSubmit} />
+                <form onSubmit={handleSubmit}>
+                    <div className="check-icon" onClick={()=>{
+                        let markStyle = document.getElementById('check-mark').style;
+                        markStyle.visibility = markStyle.visibility === 'hidden' ? 'visible' : 'hidden';}} >
+                        <img id='check-mark' className='check-mark' src={require('../images/icon-check.png')} alt='check'/>
+                    </div>
+                    <input type="text" placeholder="Currently typing" />
+                </form>
             </div>
-                <Tasklist checkList={checkList} eventForRemove={handleRemove} eventForListUpdate={eventForListUpdate}/>
+            <Tasklist checkList={checkList} eventForRemove={handleRemove} eventForListUpdate={eventForListUpdate}/>
         </div>
     )
 }
