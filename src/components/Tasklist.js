@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-const Tasklist = ({checkList, eventForRemove, eventForListUpdate}) => {
+const Tasklist = ({checkList, removeItem, updateList}) => {
 
     const [selectedList, setSelected] = useState([]);
+    const [slectedItemsIndex, setIndex] = useState([])
 
     const closeStyle = {
         position: 'relative',
@@ -17,36 +18,51 @@ const Tasklist = ({checkList, eventForRemove, eventForListUpdate}) => {
         visibility: 'hidden'
     };
 
-    const toggleMark = (index,listItem) => {
+    const toggleCheckMark = (index,listItem) => {
        let markStyle = document.getElementById(`list-check-mark-${index}`).style;
+       let textStyle = document.getElementById(`list-text-${index}`).style;
        if(markStyle.visibility === 'hidden') {
         markStyle.visibility = 'visible';
+        setIndex([...slectedItemsIndex, index]);
         setSelected([...selectedList, listItem])
        } else if(markStyle.visibility === 'visible'){
             markStyle.visibility = 'hidden';
+            textStyle.textDecoration = '';
             const newList = [...selectedList];
             let indexOfItem = selectedList.indexOf('setSelected')
             newList.splice(indexOfItem, 1);
+
+            const indexList = [...slectedItemsIndex];
+            let selectedItem = indexList.indexOf(index);
+            indexList.splice(selectedItem, 1);
+            setIndex([...indexList]);
+
             setSelected([...newList]);
         }
     }
 
+    const markCompleted = () => {
+        slectedItemsIndex.map((index) => {
+            let textStyle = document.getElementById(`list-text-${index}`).style;
+            textStyle.textDecoration = 'line-through';
+        });
+    }
+
     return (
-        
         <div className="checkbox-wrapper">
             <ul>
                 {checkList.map((listItem, index) => (
                     <div key={index}>
                         <li key={index}>
-                            <span className="list-check-icon" onClick={()=>{toggleMark(index,listItem);}} >
+                            <span className="list-check-icon" onClick={()=>{toggleCheckMark(index,listItem);}} >
                                 <img id={`list-check-mark-${index}`} src={require('../images/icon-check.png')} alt='check'
                                 style={checkMarkCss} />
                             </span>
                             <span style={closeStyle} className="close"  >
                                 <img src={require('../images/icon-cross.png')} alt='close' onClick={()=>{
-                                eventForRemove(index)}} />
+                                removeItem(index)}} />
                             </span>
-                            <span className="list-text">{listItem}</span>
+                            <span className="list-text" id={`list-text-${index}`}>{listItem}</span>
                         </li>
                         <hr style={{margin: 0}}/>
                     </div>
@@ -57,11 +73,11 @@ const Tasklist = ({checkList, eventForRemove, eventForListUpdate}) => {
                 <div className="flex-container">
                     <div>{checkList.length} Items left</div>
                     <div className="inside-flex">
-                        <span>All</span>
-                        <span>Active</span>
-                        <span onClick={()=>{eventForListUpdate(selectedList);}}>Completed</span>
+                        <span onClick={()=>{updateList([],'all');}}>All</span>
+                        <span onClick={()=>{updateList(selectedList, 'active')}}>Active</span>
+                        <span onClick={markCompleted}>Completed</span>
                     </div>
-                    <div>Clear completed</div>
+                    <div onClick={()=>{updateList(selectedList, 'remove');}}>Clear completed</div>
                 </div>
             </div>
         </div>

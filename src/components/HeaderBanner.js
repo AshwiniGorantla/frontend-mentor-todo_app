@@ -3,10 +3,12 @@ import Tasklist from "./Tasklist";
 
 function HeaderBanner(){
     const [checkList,setCheckList] = useState([]);
+    const [todoList, setTodoList] = useState([]);
 
     const handleSubmit =(event) => {
         event.preventDefault();
         setCheckList([...checkList, event.target[0].value]);
+        setTodoList([...todoList, event.target[0].value]);
         event.target.reset();
     }
 
@@ -16,9 +18,28 @@ function HeaderBanner(){
         setCheckList([...newList]);
     }
 
-    const eventForListUpdate = (updatedList) => {
-        setCheckList([...updatedList]);
-    };
+    const handleListUpdate = (selectedList,listType) => {
+        switch(listType) {
+            case 'all' : setCheckList([...todoList]);
+            break;
+            case 'active': {
+                let activeListItems = todoList.filter((el) => !(selectedList.includes(el)));
+                setCheckList([...activeListItems]);
+            }
+            break;
+            case 'remove' : {
+                selectedList.map((el) => {
+                    let index = todoList.indexOf(el);
+                    if(index > -1)
+                    todoList.splice(index,1);
+                })
+                setCheckList([...todoList]);
+                setTodoList([...todoList]);
+            }
+            break;
+            default : setCheckList([...todoList]);
+            }
+        };
 
     return (
         <div>
@@ -39,7 +60,7 @@ function HeaderBanner(){
                     <input type="text" placeholder="Currently typing" />
                 </form>
             </div>
-            <Tasklist checkList={checkList} eventForRemove={handleRemove} eventForListUpdate={eventForListUpdate}/>
+            <Tasklist checkList={checkList} removeItem={handleRemove} updateList={handleListUpdate} />
         </div>
     )
 }
