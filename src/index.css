@@ -1,13 +1,137 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.backgroud_image {
+    width: 100%;
+    height:200px;
+}
+.backgroud_image img {
+    width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background-color: black;
 }
+
+.text-on-image {
+    position: absolute;
+    left: 30%;
+    top: 5%;
+    color: white;
+    font-family: cursive;
+    font-size: 30px;
+    width:18em;
+}
+
+.sun{
+    float: right;
+    bottom: 1.25em;
+    position: relative;
+}
+
+.check-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #7796da;
+    top: 32px;
+    left: 10px;
+}
+
+.check-mark {
+    position: relative;
+    left: 4px;
+    top: 1px;
+    visibility: hidden;
+}
+
+.input_area { 
+    position: absolute;
+    top: 100px;
+    left: 30%;
+}
+
+.input_area > form >input { 
+    height: 40px;
+    width: 467px;
+    background: #7b7ba0;
+    border: none;
+    color: white;
+    padding-left: 60px;
+    font-size: 20px;
+}
+
+/* To change color of placehodler text */
+::placeholder {
+    color: white;
+}
+
+.checkbox-wrapper {
+    height: auto;
+    width: 33em;
+    position: absolute;
+    top: 205px;
+    left: 30%;
+    background: #7b7ba0;
+    border: none;
+    color: white;
+}
+
+.checkbox-wrapper{
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        .close{
+            display: none;
+        }
+        &:hover {
+            .close{
+                display: block;
+            }
+        }
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+.list-check-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #7796da;
+    float: left;
+}
+
+#list-check-mark {
+    position: relative;
+    left: 4px;
+    bottom: 3px;
+    visibility: hidden;
+}
+
+.list-text {
+    padding-left: 30px;
+    position: relative;
+    overflow-wrap: break-word;
+}
+
+.bottom-actions {
+    margin: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.inside-flex {
+    width: 33%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
