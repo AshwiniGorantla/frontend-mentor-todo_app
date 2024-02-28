@@ -19,6 +19,11 @@ function HeaderBanner(){
     }
 
     const handleListUpdate = (selectedList,listType) => {
+        let list = document.querySelectorAll('div ul li');
+        list.forEach((elem) => {
+            elem.children[0].children[0].style.visibility = 'hidden';
+            elem.children[2].style.textDecoration = '';
+        })
         switch(listType) {
             case 'all' : setCheckList([...todoList]);
             break;
@@ -27,19 +32,20 @@ function HeaderBanner(){
                 setCheckList([...activeListItems]);
             }
             break;
-            case 'remove' : {
-                selectedList.map((el) => {
+            case 'completed': setCheckList([...selectedList]);
+            break;
+            case 'clear' : 
+                selectedList.forEach((el) => {
                     let index = todoList.indexOf(el);
                     if(index > -1)
                     todoList.splice(index,1);
                 })
                 setCheckList([...todoList]);
                 setTodoList([...todoList]);
-            }
             break;
             default : setCheckList([...todoList]);
-            }
-        };
+        }
+    };
 
     return (
         <div>
