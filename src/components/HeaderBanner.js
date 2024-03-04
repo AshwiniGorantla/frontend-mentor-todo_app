@@ -49,9 +49,8 @@ function HeaderBanner(){
 
     return (
         <div>
-            <div className="backgroud_image">
-                <img src={require('../images/bg-desktop-dark.jpg')} alt="Banner" />
-            </div>
+            <img className="backgroud_image" src={require('../images/bg-desktop-dark.jpg')} alt="Banner" />
+            <img className="backgroud_image_mobile" src={require('../images/bg-mobile-dark.jpg')} alt="Banner" />
             <div className="text-on-image">
                 <h3 style={{margin:'0'}}>TODO</h3>
                 <img className='sun' src={require('../images/icon-sun.png')} alt='sun'/>
