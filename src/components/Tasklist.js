@@ -4,12 +4,6 @@ const Tasklist = ({checkList, removeItem, updateList}) => {
 
     const [selectedList, setSelected] = useState([]);
 
-    const closeStyle = {
-        position: 'relative',
-        right: '1em',
-        float: 'right'
-    };
-
     const checkMarkCss = {
         position: 'relative',
         left: '4px',
@@ -44,7 +38,7 @@ const Tasklist = ({checkList, removeItem, updateList}) => {
                                 <img id={`list-check-mark-${index}`} src={require('../images/icon-check.png')} alt='check'
                                 style={checkMarkCss} />
                             </span>
-                            <span style={closeStyle} className="close"  >
+                            <span className="close"  >
                                 <img src={require('../images/icon-cross.png')} alt='close' onClick={()=>{
                                 removeItem(index)}} />
                             </span>
@@ -57,13 +51,13 @@ const Tasklist = ({checkList, removeItem, updateList}) => {
 
             <div className="bottom-actions">
                 <div className="flex-container">
-                    <div>{checkList.length} Items left</div>
+                    <div style={{cursor:"pointer"}}>{checkList.length} Items left</div>
                     <div className="inside-flex">
                         <span onClick={()=>{updateList([],'all');}}>All</span>
                         <span onClick={()=>{updateList(selectedList, 'active')}}>Active</span>
                         <span onClick={()=>{updateList(selectedList, 'completed')}}>Completed</span>
                     </div>
-                    <div onClick={()=>{
+                    <div style={{cursor:"pointer"}} onClick={()=>{
                         let listToClear = selectedList;
                         setSelected([])
                         updateList(listToClear, 'clear');}}>Clear completed</div>
