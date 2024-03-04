@@ -1,9 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
 .backgroud_image {
     width: 100%;
-    height:200px;
+    height:350px;
 }
-.backgroud_image img {
-    width: 100%;
+
+.backgroud_image_mobile {
+    display: none;
 }
 
 body {
@@ -17,7 +24,7 @@ body {
     color: white;
     font-family: cursive;
     font-size: 30px;
-    width:18em;
+    width:35%;
 }
 
 .sun{
@@ -46,9 +53,9 @@ body {
 
 .input_area { 
     position: absolute;
-    top: 100px;
+    top: 12%;
     left: 30%;
-    width: 467px;
+    width: 35%;
 }
 
 .input_area > form >input { 
@@ -68,20 +75,15 @@ body {
 
 .checkbox-wrapper {
     height: auto;
-    width: 33em;
+    width: 35%;
     position: absolute;
-    top: 205px;
+    top: 22%;
     left: 30%;
     background: #7b7ba0;
     border: none;
     color: white;
-}
-
-.checkbox-wrapper{
     ul{
         list-style-type: none;
-        margin: 0;
-        padding: 0;
     }
     li{
         .close{
@@ -131,17 +133,36 @@ body {
 .flex-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .inside-flex {
     width: 33%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .inside-flex > span {
     cursor: pointer;
 }
 
+@media (max-width: 1150px){
+    .backgroud_image {
+        display: none;
+    }
+    
+    .backgroud_image_mobile {
+        display: block;
+        width: 100%;
+        height:350px;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .inside-flex {
+        flex-direction: column;
+    }
+}
 
