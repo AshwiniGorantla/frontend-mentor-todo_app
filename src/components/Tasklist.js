@@ -33,7 +33,7 @@ const Tasklist = ({checkList, removeItem, updateList}) => {
             <ul>
                 {checkList.map((listItem, index) => (
                     <div key={index}>
-                        <li key={index}>
+                        <li style={{"borderBottom": "solid hsl(237, 14%, 26%)", "borderWidth":"thin"}} key={index}>
                             <span className="list-check-icon" onClick={()=>{toggleCheckMark(index,listItem);}} >
                                 <img id={`list-check-mark-${index}`} src={require('../images/icon-check.png')} alt='check'
                                 style={checkMarkCss} />
@@ -44,7 +44,6 @@ const Tasklist = ({checkList, removeItem, updateList}) => {
                             </span>
                             <span className="list-text" id={`list-text-${index}`}>{listItem}</span>
                         </li>
-                        <hr style={{margin: 0}}/>
                     </div>
                 ))}
             </ul>

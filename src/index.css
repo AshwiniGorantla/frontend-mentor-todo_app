@@ -38,7 +38,7 @@ body {
     height: 20px;
     position: relative;
     border-radius: 50%;
-    background-color: #7796da;
+    background: linear-gradient(to right bottom, rgb(87, 221, 255), rgb(192, 88, 243));
     top: 32px;
     left: 10px;
     cursor:pointer;
@@ -61,7 +61,7 @@ body {
 .input_area > form >input { 
     height: 40px;
     width: 100%;
-    background: #7b7ba0;
+    background: hsl(235, 24%, 19%);
     border: none;
     color: white;
     padding-left: 60px;
@@ -79,7 +79,7 @@ body {
     position: absolute;
     top: 22%;
     left: 30%;
-    background: #7b7ba0;
+    background: hsl(235, 24%, 19%);
     border: none;
     color: white;
     ul{
@@ -108,7 +108,7 @@ body {
     height: 20px;
     position: relative;
     border-radius: 50%;
-    background-color: #7796da;
+    background: linear-gradient(to right bottom, rgb(87, 221, 255), rgb(192, 88, 243));
     float: left;
     cursor: pointer;
 }
